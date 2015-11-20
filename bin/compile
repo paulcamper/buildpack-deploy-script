@@ -8,9 +8,9 @@ build_dir=$1
 cache_dir=$2
 env_dir=$3
 
+export "DATABASE_URL=$(cat $env_dir/DATABASE_URL)"
+
 echo "Running migrations"
 
-cd $build_dir && ls bin
 cd $build_dir && bin/goose -env production up
-
 
