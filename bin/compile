@@ -10,7 +10,7 @@ env_dir=$3
 
 echo "Running migrations"
 
-cd $env_dir && pwd && ls
-#cd $build_dir && goose -env production up
+cd $build_dir && ls bin
+cd $build_dir && bin/goose -env production up
 
 
