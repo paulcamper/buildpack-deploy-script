@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-if (test -f $1/db/dbconf.yml) then
-  echo "Goose"
+if (test -f $1/scripts/pre-deploy) then
+  echo "Pre-deploy"
   exit 0
 else
   echo "no"
