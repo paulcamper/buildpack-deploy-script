@@ -8,9 +8,16 @@ build_dir=$1
 cache_dir=$2
 env_dir=$3
 
-export "DATABASE_URL=$(cat $env_dir/DATABASE_URL)"
+blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
+if [ -d "$env_dir" ]; then
+  for e in $(ls $env_dir); do
+    echo "$e" | grep -qvE "$blacklist_regex" &&
+      export "$e=$(cat $env_dir/$e)"
+    :
+  done
+fi
 
-echo "Running pre-deploy script"
+echo "Running sh ./scripts/pre-deploy"
 
 cd $build_dir && sh ./scripts/pre-deploy
 
