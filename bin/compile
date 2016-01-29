@@ -10,7 +10,7 @@ env_dir=$3
 
 export "DATABASE_URL=$(cat $env_dir/DATABASE_URL)"
 
-echo "Running migrations"
+echo "Running pre-deploy script"
 
-cd $build_dir && bin/goose -env production up
+cd $build_dir && sh ./scripts/pre-deploy
 
