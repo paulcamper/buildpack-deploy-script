@@ -1,1 +1,1 @@
-# Heroku buildpack for running goose db migration on deploy
+# Heroku buildpack for running arbitrary pre-deploy script
